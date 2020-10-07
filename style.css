@@ -48,3 +48,6 @@ address {
   padding: 50px 0px 0px 0px;
   z-index: 0;
 }
+.card-header {
+  cursor: pointer;
+}
