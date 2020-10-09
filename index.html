@@ -104,14 +104,7 @@
             </li>
           </ul>
           <span class="navbar-text">
-            <a
-              class="login"
-              data-toggle="modal"
-              data-target="#loginModal"
-              style="text-decoration: none"
-            >
-              <span class="fa fa-sign-in"></span> Login</a
-            >
+            <a id="loginButton"><span class="fa fa-sign-in"></span> Login</a>
           </span>
         </div>
       </div>
@@ -336,13 +329,13 @@
               >Reserve Table</a
             > -->
 
-            <a
-              role="button"
+            <button
+              type="button"
               class="btn btn-block nav-link btn-warning"
-              data-toggle="modal"
-              data-target="#reservationModal"
-              >Reserve Table</a
+              id="reserveButton"
             >
+              Reserve table
+            </button>
           </div>
         </div>
       </div>
@@ -739,6 +732,12 @@
               .children("span")
               .addClass("fa-pause");
           }
+        });
+        $("#loginButton").click(function () {
+          $("#loginModal").modal("show");
+        });
+        $("#reserveButton").click(function () {
+          $("#reservationModal").modal("show");
         });
       });
     </script>

@@ -51,7 +51,7 @@ address {
 .card-header {
   cursor: pointer;
 }
-.login {
+#loginButton {
   cursor: pointer;
 }
 
@@ -69,10 +69,23 @@ address {
   left: 0;
   min-height: 300px;
 }
-
+.close {
+  color: white;
+}
 #carouselButton {
   right: 0px;
   position: absolute;
   bottom: 0px;
   z-index: 1;
+}
+.modal-header {
+  background: #512da8;
+}
+
+.modal-body {
+  background: #d1c4e9;
+}
+
+.modal-title {
+  color: white;
 }
