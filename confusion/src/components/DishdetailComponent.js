@@ -40,7 +40,7 @@ class DishDetail extends Component {
 
     const renderedComments = comments.map((comment) => {
       return (
-        <li>
+        <li key={comment.id}>
           <p>{comment.comment}</p>
           <p>
             -- {comment.author},{" "}
