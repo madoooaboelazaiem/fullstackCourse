@@ -68,12 +68,7 @@ class Main extends Component {
             <Route
               exact
               path="/menu"
-              component={() => (
-                <Menu
-                  dishes={this.state.dishes}
-                  onClick={(dishId) => this.onDishSelect(dishId)}
-                />
-              )}
+              component={() => <Menu dishes={this.state.dishes} />}
             />
             <Redirect to="/home" />
           </Switch>
