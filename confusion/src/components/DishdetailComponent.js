@@ -10,6 +10,8 @@ import {
   BreadcrumbItem,
 } from "reactstrap";
 import { Link } from "react-router-dom";
+import CommentForm from "./CommentFormComponent";
+
 // function convertDateToCommentDateFormat(timestamp) {
 //   const date = new Date(timestamp);
 //   return date.toLocaleDateString("en-US", {
@@ -29,7 +31,7 @@ function RenderDish({ dish }) {
     </Card>
   );
 }
-function RenderComments({ comments }) {
+function RenderComments({ comments, dishId, postComment }) {
   if (comments == null || comments.length === 0) {
     return <div></div>;
   }
@@ -52,10 +54,13 @@ function RenderComments({ comments }) {
   });
 
   return (
-    <div>
-      <h4>Comments</h4>
-      <ul className="list-unstyled">{renderedComments}</ul>
-    </div>
+    <React.Fragment>
+      <div>
+        <h4>Comments</h4>
+        <ul className="list-unstyled">{renderedComments}</ul>
+      </div>
+      <CommentForm dishId={dishId} postComment={postComment} />
+    </React.Fragment>
   );
 }
 
@@ -80,7 +85,11 @@ const DishDetail = (props) => {
             <RenderDish dish={props.dish} />
           </div>
           <div className="col-12 col-md-5 m-1">
-            <RenderComments comments={props.comments} />
+            <RenderComments
+              comments={props.comments}
+              postComment={props.postComment}
+              dishId={props.dish.id}
+            />
           </div>
         </div>
       </div>
