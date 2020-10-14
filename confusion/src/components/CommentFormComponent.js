@@ -8,12 +8,11 @@ import {
   Row,
   Col,
 } from "reactstrap";
-import { Control, LocalForm, Errors } from "react-redux-form";
+import { Control, Form, Errors, actions } from "react-redux-form";
 
 const required = (val) => val && val.length;
 const maxLength = (len) => (val) => !val || val.length <= len;
 const minLength = (len) => (val) => val && val.length >= len;
-
 class CommentForm extends Component {
   constructor(props) {
     super(props);
@@ -31,7 +30,7 @@ class CommentForm extends Component {
 
   handleSubmit(values) {
     this.toggleModal();
-    this.props.postComment(
+    this.props.addComment(
       this.props.dishId,
       values.rating,
       values.author,
@@ -48,7 +47,11 @@ class CommentForm extends Component {
         <Modal isOpen={this.state.isModalOpen} toggle={this.toggleModal}>
           <ModalHeader>Submit Comment</ModalHeader>
           <ModalBody>
-            <LocalForm onSubmit={(values) => this.handleSubmit(values)}>
+            <Form
+              model="feedback"
+              onSubmit={(values) => this.handleSubmit(values)}
+            >
+              {" "}
               <Row className="form-group">
                 <Label htmlFor="rating" md={12}>
                   Rating
@@ -118,12 +121,11 @@ class CommentForm extends Component {
                   </Button>
                 </Col>
               </Row>
-            </LocalForm>
+            </Form>
           </ModalBody>
         </Modal>
       </React.Fragment>
     );
   }
 }
-
 export default CommentForm;
